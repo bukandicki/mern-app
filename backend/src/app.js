@@ -9,7 +9,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(routes);
+app.use("/v1", routes);
+
+console.clear();
+console.log("Connecting...");
 
 mongoose
   .connect(
@@ -17,6 +20,7 @@ mongoose
   )
   .then(() => {
     app.listen(3000, () => {
+      console.clear()
       console.log("Express run on port 3000");
     });
   });
