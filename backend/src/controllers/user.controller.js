@@ -1,9 +1,8 @@
-const httpStatus = require("http-status");
 const { userService } = require("../services");
 
-const createUser = async (req, res) => {
+const CREATE_USER = async (req, res) => {
   try {
-    const user = await userService.makeUser(req.body);
+    const user = await userService.CREATE(req.body);
 
     res.send({ data: user });
   } catch (error) {
@@ -11,9 +10,32 @@ const createUser = async (req, res) => {
   }
 };
 
-const getUsers = async (_, res) => {
+const GET_USER_LISTS = async (_, res) => {
   try {
-    const user = await userService.queryUser();
+    const user = await userService.GET_ALL();
+
+    res.send({ data: user });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+const UPDATE_USER = async (req, res) => {
+  try {
+    const user = await userService.UPDATE(
+      req.params.id,
+      req.body
+    );
+
+    res.send({ data: user });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+const DELETE_USER = async (req, res) => {
+  try {
+    const user = await userService.DELETE(req.params.id);
 
     res.send({ data: user });
   } catch (error) {
@@ -22,6 +44,8 @@ const getUsers = async (_, res) => {
 };
 
 module.exports = {
-  createUser,
-  getUsers,
+  CREATE_USER,
+  GET_USER_LISTS,
+  UPDATE_USER,
+  DELETE_USER
 };
