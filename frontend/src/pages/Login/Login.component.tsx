@@ -26,8 +26,11 @@ export default function LoginPage() {
         }),
       });
 
+      const { data } = await response.json()
+
       if (response.ok) {
         navigate("/dashboard")
+        localStorage.setItem("user", JSON.stringify(data));
         localStorage.setItem("login", "true")
       }
     } catch (error) {
