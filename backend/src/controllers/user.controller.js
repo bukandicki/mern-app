@@ -43,9 +43,20 @@ const DELETE_USER = async (req, res) => {
   }
 };
 
+const SEND_EMAIL = async (req, res) => {
+  try {
+    const info = await userService.CREATE_EMAIL(req.body.email, req.body.message);
+
+    res.send({ data: info });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
 module.exports = {
   CREATE_USER,
   GET_USER_LISTS,
   UPDATE_USER,
-  DELETE_USER
+  DELETE_USER,
+  SEND_EMAIL
 };

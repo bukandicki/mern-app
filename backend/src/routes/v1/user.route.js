@@ -9,6 +9,10 @@ router
     .get(userController.GET_USER_LISTS)
 
 router
+    .route("/send-email")
+    .post(userController.SEND_EMAIL)
+
+router
     .route("/:id")
     .patch(userController.UPDATE_USER)
     .delete(userController.DELETE_USER);
