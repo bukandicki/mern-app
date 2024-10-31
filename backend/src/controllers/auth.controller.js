@@ -15,7 +15,7 @@ const login = async (req, res) => {
 
     await user.save()
 
-    res.status(200).send({ message: "Login succeed!" })
+    res.status(200).send({ message: "Login succeed!", data: user });
   } catch (error) {
     res.status(500).send(error);
   }
