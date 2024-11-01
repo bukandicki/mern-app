@@ -1,11 +1,10 @@
-
 import { FormEvent, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../Root.component";
 
-const BASE_API_URL = import.meta.env.VITE_BASE_API_URL
+const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 
-import "./Login.styles.scss"
+import "./Login.styles.scss";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -13,7 +12,7 @@ export default function LoginPage() {
   const { setCurrentUser } = useContext(AppContext);
 
   const handleFormSubmitted = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const form = e.target as HTMLFormElement;
     const fd = new FormData(form);
@@ -30,26 +29,36 @@ export default function LoginPage() {
         }),
       });
 
-      const { data } = await response.json()
+      const { data } = await response.json();
 
       if (response.ok) {
-        navigate("/dashboard")
+        navigate("/dashboard");
         localStorage.setItem("user", JSON.stringify(data));
-        setCurrentUser(data)
+        setCurrentUser(data);
       }
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   };
 
   return (
     <main className="LoginPage">
       <form onSubmit={handleFormSubmitted}>
-        <input type="email" autoComplete="off" name="email" placeholder="Enter email..." />
-        <input type="password" autoComplete="off" name="password" placeholder="Enter password..." />
+        <input
+          type="email"
+          autoComplete="off"
+          name="email"
+          placeholder="Enter email..."
+        />
+        <input
+          type="password"
+          autoComplete="off"
+          name="password"
+          placeholder="Enter password..."
+        />
 
         <button type="submit">Login</button>
       </form>
     </main>
-  )
+  );
 }

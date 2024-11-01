@@ -22,10 +22,7 @@ const GET_USER_LISTS = async (_, res) => {
 
 const UPDATE_USER = async (req, res) => {
   try {
-    const user = await userService.UPDATE(
-      req.params.id,
-      req.body
-    );
+    const user = await userService.UPDATE(req.params.id, req.body);
 
     res.send({ data: user });
   } catch (error) {
@@ -45,7 +42,10 @@ const DELETE_USER = async (req, res) => {
 
 const SEND_EMAIL = async (req, res) => {
   try {
-    const info = await userService.CREATE_EMAIL(req.body.email, req.body.message);
+    const info = await userService.CREATE_EMAIL(
+      req.body.email,
+      req.body.message
+    );
 
     res.send({ data: info });
   } catch (error) {
@@ -58,5 +58,5 @@ module.exports = {
   GET_USER_LISTS,
   UPDATE_USER,
   DELETE_USER,
-  SEND_EMAIL
+  SEND_EMAIL,
 };
