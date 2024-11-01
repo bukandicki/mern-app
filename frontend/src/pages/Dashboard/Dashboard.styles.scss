@@ -1,3 +1,11 @@
+.DashboardPage__logout {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  padding: 18px;
+  background-color: palevioletred;
+}
+
 .DashboardPage__data {
   margin-top: 60px;
 
@@ -21,6 +29,14 @@
   input {
     border: 1px solid #b1b1b1;
   }
+
+  button[type="submit"] {
+    background-color: aquamarine;
+  }
+
+  button[type="button"] {
+    background-color: palevioletred;
+  }
 }
 
 .DashboardPage__users {
@@ -36,5 +52,20 @@
 
   button {
     padding: 8px;
+  }
+
+  #edit-btn {
+    background-color: rgb(250, 211, 103);
+  }
+  #delete-btn {
+    background-color: palevioletred;
+  }
+  #email-btn {
+    background-color: aquamarine;
+  }
+
+  button[disabled] {
+    cursor: not-allowed;
+    background-color: rgb(235, 235, 235) !important;
   }
 }

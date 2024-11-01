@@ -58,13 +58,17 @@ export default function DashboardPage() {
   };
 
   const handleDeleteUser = (id: string) => {
-    fetch(`${BASE_API_URL}/users/${id}`, {
-      method: "DELETE",
-    }).then(() => {
-      fetchUsers((data) => {
-        setUsers(data);
+    const propmt = confirm("You sure wan't to delete?");
+
+    if (propmt) {
+      fetch(`${BASE_API_URL}/users/${id}`, {
+        method: "DELETE",
+      }).then(() => {
+        fetchUsers((data) => {
+          setUsers(data);
+        });
       });
-    });
+    }
   };
 
   const handleEditUser = async (data: UserType) => {
@@ -223,6 +227,7 @@ export default function DashboardPage() {
                 <td>{formatDate(user.last_logout)}</td>
                 <td>
                   <button
+                    id="edit-btn"
                     disabled={currentUser?._id === user._id}
                     onClick={() => handleEditUser(user)}
                   >
@@ -231,6 +236,7 @@ export default function DashboardPage() {
                 </td>
                 <td>
                   <button
+                    id="delete-btn"
                     disabled={currentUser?._id === user._id}
                     onClick={() => handleDeleteUser(user._id)}
                   >
@@ -239,6 +245,7 @@ export default function DashboardPage() {
                 </td>
                 <td>
                   <button
+                    id="email-btn"
                     disabled={currentUser?._id === user._id}
                     onClick={() => setShowPopup(user.email)}
                   >
