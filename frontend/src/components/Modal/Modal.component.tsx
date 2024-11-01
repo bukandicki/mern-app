@@ -32,32 +32,46 @@ export default function Modal({
                 <span></span>
               </button>
 
-              <form onSubmit={handleFormSubmitted}>
-                <h2>Create</h2>
+              <form className="Modal__form" onSubmit={handleFormSubmitted}>
+                <h2>Create Email</h2>
 
-                <label htmlFor="">Email</label>
-                <input
-                  type="email"
-                  readOnly
-                  autoComplete="off"
-                  value={email}
-                  name="email"
-                />
+                <div>
+                  <label htmlFor="">Email</label>
+                  <input
+                    type="email"
+                    readOnly
+                    autoComplete="off"
+                    value={email}
+                    name="email"
+                  />
+                </div>
 
-                <label htmlFor="">Date</label>
-                <input
-                  type="date"
-                  autoComplete="off"
-                  disabled={disabled}
-                  name="date"
-                />
+                <div>
+                  <label htmlFor="">Date</label>
+                  <input
+                    type="date"
+                    autoComplete="off"
+                    disabled={disabled}
+                    name="date"
+                  />
+                </div>
 
-                <label htmlFor="">Description</label>
-                <textarea
-                  name="description"
-                  autoComplete="off"
-                  disabled={disabled}
-                />
+                <div>
+                  <label htmlFor="">Description</label>
+                  <textarea
+                    name="description"
+                    autoComplete="off"
+                    placeholder="Enter email messages..."
+                    cols={40}
+                    disabled={disabled}
+                  />
+
+                  <p>
+                    *Ethereal is a fake SMTP service, It's a completely free
+                    anti-transactional email service where messages never get
+                    delivered.
+                  </p>
+                </div>
 
                 <button type="submit" disabled={disabled}>
                   Submit
