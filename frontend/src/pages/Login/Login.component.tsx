@@ -59,6 +59,8 @@ export default function LoginPage() {
 
         <button type="submit">Login</button>
       </form>
+
+      <p>default user: admin@gmail.com, pass: 123</p>
     </main>
   );
 }
